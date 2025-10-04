@@ -1,6 +1,6 @@
+import './globals.css'
 import type { Metadata } from 'next'
 import { Bricolage_Grotesque } from 'next/font/google'
-import './globals.css'
 import Header from '@/components/Layout/Header'
 import Footer from '@/components/Layout/Footer'
 import { ThemeProvider } from 'next-themes'
@@ -19,17 +19,18 @@ export default function RootLayout({
   session,
 }: Readonly<{
   children: React.ReactNode
-  session: any
+  session: unknown
 }>) {
   return (
-    <html lang='en'>
+    <html lang='en' suppressHydrationWarning>
       <body className={`${font.className} bg-white dark:bg-black antialiased`}>
         <NextTopLoader color="#07be8a" />
         <SessionProviderComp session={session}>
           <ThemeProvider
             attribute='class'
             enableSystem={true}
-            defaultTheme='light'>
+            defaultTheme='light'
+            disableTransitionOnChange>
             <Header />
             {children}
             <Footer />
