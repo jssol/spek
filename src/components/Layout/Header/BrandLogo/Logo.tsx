@@ -1,23 +1,21 @@
 import Image from 'next/image'
 
-const Logo: React.FC = () => {
+interface LogoProps {
+  className?: string;
+  width?: number;
+  height?: number;
+}
+
+const Logo: React.FC<LogoProps> = ({ className, width = 128, height = 64 }) => {
   return (
     <>
       <Image
-        src={'/images/header/dark-logo.svg'}
-        alt='logo'
-        width={150}
-        height={68}
-        unoptimized={true}
-        className='dark:hidden'
-      />
-      <Image
         src={'/images/header/logo.svg'}
         alt='logo'
-        width={150}
-        height={68}
+        width={width}
+        height={height}
         unoptimized={true}
-        className='dark:block hidden'
+        className={`${className}`}
       />
     </>
   )
