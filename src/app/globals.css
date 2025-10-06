@@ -1,7 +1,5 @@
 @import 'tailwindcss';
-@import "tailwindcss/preflight";
-@import "tailwindcss/utilities";
-@import 'tailwindcss-animate';
+/* @import 'tailwindcss-animate'; */
 
 @variant dark (&:where(.dark, .dark *));
 
@@ -43,7 +41,6 @@
     0% {
       transform: translateX(0%);
     }
-
     100% {
       transform: translateX(-103%);
     }

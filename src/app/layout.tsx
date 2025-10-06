@@ -23,13 +23,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en' suppressHydrationWarning>
-      <body className={`${font.className} bg-white dark:bg-black antialiased`}>
+      <body className={`${font.className} bg-white dark:bg-black antialiased`} suppressHydrationWarning >
         <NextTopLoader color="#07be8a" />
         <SessionProviderComp session={session}>
           <ThemeProvider
             attribute='class'
             enableSystem={true}
-            defaultTheme='light'
             disableTransitionOnChange>
             <Header />
             {children}
