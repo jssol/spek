@@ -7,12 +7,14 @@ import NavLink from './Navigation/NavLink'
 import { useTheme } from 'next-themes'
 import { usePathname } from 'next/navigation'
 import Logo from './BrandLogo/Logo'
+import { useTranslation } from '@/hooks/useTranslation'
 
 const Header: React.FC = () => {
   const [sticky, setSticky] = useState(false)
   const [navbarOpen, setNavbarOpen] = useState(false)
   const { theme, setTheme } = useTheme()
   const pathname = usePathname()
+  const t = useTranslation()
 
   const sideMenuRef = useRef<HTMLDivElement>(null)
 
@@ -97,7 +99,7 @@ const Header: React.FC = () => {
                 <span>
                   <Icon icon={'ph:list'} width={24} height={24} />
                 </span>
-                <span className='hidden sm:block'>Menu</span>
+                <span className='hidden sm:block'>{t.header.menu}</span>
               </button>
             </div>
           </div>
