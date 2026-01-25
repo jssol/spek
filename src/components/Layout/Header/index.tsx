@@ -6,7 +6,7 @@ import { useEffect, useRef, useState, useCallback } from 'react'
 import NavLink from './Navigation/NavLink'
 import { useTheme } from 'next-themes'
 import { usePathname } from 'next/navigation'
-import Image from 'next/image'
+import Logo from './BrandLogo/Logo'
 
 const Header: React.FC = () => {
   const [sticky, setSticky] = useState(false)
@@ -44,26 +44,13 @@ const Header: React.FC = () => {
         <div className='flex justify-between items-center gap-2 w-full'>
           <div>
             <Link href='/'>
-              <Image
-                src={'/images/header/dark-logo.svg'}
-                alt='logo'
-                width={150}
-                height={68}
-                unoptimized={true}
-                className={`${isHomepage ? sticky ? "block dark:hidden" : "hidden" : sticky ? "block dark:hidden" : "block dark:hidden"}`}
-              />
-              <Image
-                src={'/images/header/logo.svg'}
-                alt='logo'
-                width={150}
-                height={68}
-                unoptimized={true}
-                className={`${isHomepage ? sticky ? "hidden dark:block" : "block" : sticky ? "dark:block hidden" : "dark:block hidden"}`}
-              />
+              <Logo className="text-black dark:text-white" width={sticky ? 64 : undefined} height={sticky ? 32 : undefined} />
             </Link>
           </div>
           <div className='flex items-center gap-2 sm:gap-6'>
             <button
+              type="button"
+              title="Toggle Theme"
               className='hover:cursor-pointer'
               onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
             >
@@ -86,7 +73,7 @@ const Header: React.FC = () => {
               />
             </button>
             <div className={`hidden md:block`}>
-              <Link href='#' className={`text-base text-inherit flex items-center gap-2 border-r pr-6 ${isHomepage
+              <Link href='tel:+243997340486' className={`text-base text-inherit flex items-center gap-2 border-r pr-6 ${isHomepage
                 ? sticky
                   ? 'text-dark dark:text-white hover:text-primary border-dark dark:border-white'
                   : 'text-white hover:text-primary'
@@ -94,7 +81,7 @@ const Header: React.FC = () => {
                 }`}
               >
                 <Icon icon={'ph:phone-bold'} width={24} height={24} />
-                +1-212-456-789
+                +243 997 340 486
               </Link>
             </div>
             <div>
@@ -171,11 +158,11 @@ const Header: React.FC = () => {
             <p className='text-base sm:text-xm font-normal text-white/40'>
               Contact
             </p>
-            <Link href="#" className='text-base sm:text-xm font-medium text-inherit hover:text-primary'>
-              hello@homely.com
+            <Link href="mailto:spekivu@gmail.com" className='text-base sm:text-xm font-medium text-inherit hover:text-primary'>
+              spekivu@gmail.com
             </Link>
-            <Link href="#" className='text-base sm:text-xm font-medium text-inherit hover:text-primary'>
-              +1-212-456-7890{' '}
+            <Link href="tel:+243997340486" className='text-base sm:text-xm font-medium text-inherit hover:text-primary'>
+              +243 997 340 486{' '}
             </Link>
           </div>
         </div>

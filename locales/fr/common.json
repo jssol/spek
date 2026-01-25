@@ -1,0 +1,12 @@
+{
+  "header": {
+    "home": "Accueil",
+    "projects": "Projets",
+    "blog": "Blog",
+    "contact": "Contact",
+    "docs": "Documentation",
+    "menu": "Menu",
+    "signIn": "Se connecter",
+    "signUp": "Inscription"
+  }
+}
