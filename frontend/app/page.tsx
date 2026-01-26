@@ -1,6 +1,43 @@
-import Image from "next/image";
+"use client";
 
-export default function Home() {
+import Image from "next/image";
+import { useState } from 'react';
+import { createInstance } from 'i18next';
+import { I18nextProvider, useTranslation } from 'react-i18next';
+
+const locales = {
+  en: {
+    common: {
+      "home": {
+        "welcome_message": "Welcome to our application!",
+        "get_started": "Get Started"
+      },
+      "welcome_message": "Jonathan is awesome!"
+    }
+  },
+  fr: {
+    common: {
+      "home": {
+        "welcome_message": "Bienvenue dans notre application !",
+        "get_started": "Commencer"
+      },
+      "welcome_message": "Jonathan est génial !"
+    }
+  },
+  sw: {
+    common: {
+      "home": {
+        "welcome_message": "Karibu kwenye programu yetu!",
+        "get_started": "Anza"
+      },
+      "welcome_message": "Jonathan ni wa ajabu!"
+    }
+  }
+};
+
+function HomeContent() {
+  const { t } = useTranslation('common');
+
   return (
     <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
       <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
@@ -14,7 +51,7 @@ export default function Home() {
         />
         <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
           <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
+            {t('home.welcome_message')}
           </h1>
           <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
             Looking for a starting point or more instructions? Head over to{" "}
@@ -61,5 +98,26 @@ export default function Home() {
         </div>
       </main>
     </div>
+  );
+}
+
+export default function Home() {
+  const [i18n] = useState(() => {
+    const i18nInstance = createInstance();
+    i18nInstance.init({
+      lng: 'en',
+      fallbackLng: 'en',
+      resources: locales,
+      interpolation: {
+        escapeValue: false,
+      },
+    });
+    return i18nInstance;
+  });
+
+  return (
+    <I18nextProvider i18n={i18n}>
+      <HomeContent />
+    </I18nextProvider>
   );
 }
